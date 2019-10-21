@@ -26,7 +26,6 @@ public class MainActivity extends Activity {
         serverControl = new ServerControl();
 
         setSwitch(sw); // NETWORK ON MAIN THREAD EXCEPTION
-
     }
 
     public void setSwitch(Switch sw){

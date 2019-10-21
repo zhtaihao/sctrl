@@ -1,5 +1,7 @@
 package net.jstorch.mc.cloudcontrol;
 
+import android.os.AsyncTask;
+
 import de.taihao.sctrl.ApiToken;
 import me.tomsdevsn.hetznercloud.HetznerCloudAPI;
 import me.tomsdevsn.hetznercloud.objects.general.Image;
@@ -27,7 +29,7 @@ import java.util.concurrent.TimeUnit;
  * Klasse zur Steuerung des Minecraft Servers
  * Ausgabe von Status Nachrichten über String Lists
  */
-public class ServerControl {
+public class ServerControl extends AsyncTask {
     /**
      * API Token
      * Api Token to get from the ApiToken Class which contains the Token as a String and is not uploaded to git
@@ -78,6 +80,13 @@ public class ServerControl {
         }
         sshKeys = keys;
 
+    }
+
+    @Override
+    protected Object doInBackground(Object[] objects) {
+        // TODO: use parameter to execute certain methods depending on parameter
+        // method is required by abstract class android.os.AsyncTask
+        return null;
     }
 
     /**
