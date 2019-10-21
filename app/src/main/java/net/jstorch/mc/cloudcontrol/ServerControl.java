@@ -44,23 +44,23 @@ public class ServerControl extends AsyncTask<String, Void, List<String>> {
     /**
      * Name den der Server beim Starten bekommt
      */
-    private static final String serverName = "minecraft-server.jstorch.net";
+    private static String serverName;
     /**
      * Name den das aktuelle Image bekommt
      */
-    private static final String imageCurrent = "minecraft-current";
+    private static String imageCurrent;
     /**
      * Name den das alte zu löschende Image bekommt
      */
-    private static final String imageOld = "minecraft-old";
+    private static String imageOld;
     /**
      * IPv4 reverse DNS Eintrag
      */
-    private static final String reverseDNS4 = "minecraft.jstorch.net";
+    private static String reverseDNS4;
     /**
      * IPv6 reverse DNS Eintrag
      */
-    private static final String reverseDNS6 = "minecraft6.jstorch.net";
+    private static String reverseDNS6;
     /**
      * Servertyp (siehe Hetznercloud Dokuemtation)
      */
@@ -74,14 +74,25 @@ public class ServerControl extends AsyncTask<String, Void, List<String>> {
      */
     private HetznerCloudAPI cloud;
 
-    public ServerControl(String serverType) {
+    public ServerControl(String serverID, List<String> statusMSG) {
 
         //change vanilla to minecraft serverType because joshuaStorch is too lazy to review his old code
         if(serverType.equals("vanilla"))
-            serverType = "minecraft";
+            serverID = "minecraft";
 
-        token = ApiToken.getToken(serverType);
-        //TODO add initialization of variables to incorporate the given serverType
+        try {
+            token = ApiToken.getToken(serverID);
+
+        } catch (IllegalArgumentException e){
+            statusMSG.add( "Invalid serverID:" + serverID +"!");
+        }
+
+        //Set strings to match the given ServerID
+        serverName = serverID + "-server.jstorch.net";
+        imageCurrent = serverID + "-current";
+        imageOld = serverID + "-old";
+        reverseDNS4 = serverID + "4.jstorch.net";
+        reverseDNS6 = serverID + "6.jstorch.net";
 
         cloud = new HetznerCloudAPI(token);
         List<Object> keys = new LinkedList<>();
