@@ -14,7 +14,6 @@ import me.tomsdevsn.hetznercloud.objects.request.UpdateImageRequest;
 import me.tomsdevsn.hetznercloud.objects.response.ImageType;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URI;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.client.ClientHttpRequest;
