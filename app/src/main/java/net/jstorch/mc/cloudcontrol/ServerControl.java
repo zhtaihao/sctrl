@@ -1,11 +1,4 @@
-package de.taihao.sctrl;
-
-/*
-* taken from https://github.com/joshuastorch/servercontrol-java
-* 2019-10-11
-* slight adjustments made
-*
-* */
+package net.jstorch.mc.cloudcontrol;
 
 import me.tomsdevsn.hetznercloud.HetznerCloudAPI;
 import me.tomsdevsn.hetznercloud.objects.general.Image;
@@ -41,7 +34,7 @@ public class ServerControl {
     /**
      * Liste an SSH Keys. Wird im Konstruktor automatisch mit allen SSH Keys im Projekt gefüllt
      */
-    private List<Object> sshKeys;
+    private final List<Object> sshKeys;
     /**
      * Name den der Server beim Starten bekommt
      */
@@ -76,17 +69,12 @@ public class ServerControl {
     private HetznerCloudAPI cloud;
 
     public ServerControl() {
-        new Thread(new Runnable() {
-            public void run() {
-                cloud = new HetznerCloudAPI(token);
-                List<Object> keys = new LinkedList<>();
-                for (SSHKey key : cloud.getSSHKeys().getSshKeys()) {
-                    keys.add(key.getId());
-                }
-                sshKeys = keys;
-            }
-        }).start();
-
+        cloud = new HetznerCloudAPI(token);
+        List<Object> keys = new LinkedList<>();
+        for (SSHKey key : cloud.getSSHKeys().getSshKeys()) {
+            keys.add(key.getId());
+        }
+        sshKeys = keys;
 
     }
 
@@ -285,7 +273,7 @@ public class ServerControl {
 
         }
         cloud.createImage(server.getId(), CreateImageRequest.builder().description(imageCurrent).type("snapshot").build());
-        /*Urspruenglich: new CreateImageRequest(imageCurrent, "snapshot") statt Builder*/
+
         try {
             TimeUnit.SECONDS.sleep(6);
         } catch (Exception e) {
