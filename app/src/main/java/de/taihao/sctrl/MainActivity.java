@@ -15,7 +15,7 @@ public class MainActivity extends Activity {
 
     private List<String> statusMSG;
     private ServerControl serverControlVanilla;
-
+    private ServerControl serverControlStoneblock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,8 @@ public class MainActivity extends Activity {
         final Switch sw = findViewById(R.id.switchServer1);
 
         statusMSG = new ArrayList<>();
-        serverControlVanilla = new ServerControl("vanilla");
+        serverControlVanilla = new ServerControl("vanilla", statusMSG);
+        serverControlStoneblock = new ServerControl("stoneblock" , statusMSG);
 
         setSwitch(sw); // NETWORK ON MAIN THREAD EXCEPTION
     }

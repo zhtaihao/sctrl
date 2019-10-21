@@ -72,13 +72,18 @@ public class ServerControl extends AsyncTask {
      */
     private HetznerCloudAPI cloud;
 
-    public ServerControl(String serverID) {
+    public ServerControl(String serverID, List<String> statusMSG) {
 
         //change vanilla to minecraft serverType because joshuaStorch is to lazy to review his old code
         if(serverType.equals("vanilla"))
             serverID = "minecraft";
 
-        token = ApiToken.getToken(serverID);
+        try {
+            token = ApiToken.getToken(serverID);
+
+        } catch (IllegalArgumentException e){
+            statusMSG.add( "Invalid serverID:" + serverID +"!");
+        }
 
         //Set strings to match the given ServerID
         serverName = serverID + "-server.jstorch.net";
