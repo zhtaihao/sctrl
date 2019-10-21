@@ -9,12 +9,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.tomsdevsn.hetznercloud.HetznerCloudAPI;
-import me.tomsdevsn.hetznercloud.objects.general.Server;
-
 import net.jstorch.mc.cloudcontrol.ServerControl;
 
 public class MainActivity extends Activity {
+
+    private List<String> statusMSG;
+    private ServerControl serverControl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +22,10 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         final Switch sw = findViewById(R.id.switchServer1);
 
-        List<String> statusMSG = new ArrayList<>();
-        ServerControl serverControl = new ServerControl();
+        statusMSG = new ArrayList<>();
+        serverControl = new ServerControl();
 
         setSwitch(sw); // NETWORK ON MAIN THREAD EXCEPTION
-
 
     }
 
