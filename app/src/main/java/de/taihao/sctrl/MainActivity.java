@@ -14,16 +14,17 @@ import net.jstorch.mc.cloudcontrol.ServerControl;
 public class MainActivity extends Activity {
 
     private List<String> statusMSG;
-    private ServerControl serverControl;
+    private ServerControl serverControlVanilla;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final Switch sw = findViewById(R.id.switchServer1);
 
         statusMSG = new ArrayList<>();
-        serverControl = new ServerControl();
+        serverControlVanilla = new ServerControl("vanilla");
 
         setSwitch(sw); // NETWORK ON MAIN THREAD EXCEPTION
     }
@@ -31,7 +32,7 @@ public class MainActivity extends Activity {
     public void setSwitch(Switch sw){
 
         sw.setEnabled(false);
-        switch (serverControl.getServerStatus()) {
+        switch (serverControlVanilla.getServerStatus()) {
             case 0: {
                 // Server läuft gerade
                 sw.setChecked(true);
@@ -45,7 +46,7 @@ public class MainActivity extends Activity {
             case 2: {
                 // Server wird gerade gestartet
                 sw.setChecked(true);
-                while (serverControl.getServerStatus() != 0){
+                while (serverControlVanilla.getServerStatus() != 0){
                     showToast(true);
                 }
                 sw.setEnabled(true);
@@ -53,7 +54,7 @@ public class MainActivity extends Activity {
             case 3: {
                 // Server wird gerade gestoppt
                 sw.setChecked(false);
-                while (serverControl.getServerStatus() != 1){
+                while (serverControlVanilla.getServerStatus() != 1){
                     showToast(false);
                 }
                 sw.setEnabled(true);
@@ -109,14 +110,14 @@ public class MainActivity extends Activity {
             public void onCheckedChanged(CompoundButton cb, boolean isChecked) {
                 if (isChecked) {
                     //action if it's now checked
-                    serverControl.startServer(statusMSG);
-                    while(serverControl.getServerStatus() != 0){
+                    serverControlVanilla.startServer(statusMSG);
+                    while(serverControlVanilla.getServerStatus() != 0){
                         setSwitch(sw);
                     }
                 } else {
                     //action if it's now unchecked
-                    serverControl.createImage(statusMSG);
-                    while(serverControl.getServerStatus() != 1){
+                    serverControlVanilla.createImage(statusMSG);
+                    while(serverControlVanilla.getServerStatus() != 1){
                         setSwitch(sw);
                     }
                 }

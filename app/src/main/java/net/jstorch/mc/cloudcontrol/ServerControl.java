@@ -34,7 +34,7 @@ public class ServerControl extends AsyncTask {
      * API Token
      * Api Token to get from the ApiToken Class which contains the Token as a String and is not uploaded to git
      */
-    private static final String token = ApiToken.APIVANILLA;
+    private static String token;
     /**
      * Liste an SSH Keys. Wird im Konstruktor automatisch mit allen SSH Keys im Projekt gefüllt
      */
@@ -72,7 +72,10 @@ public class ServerControl extends AsyncTask {
      */
     private HetznerCloudAPI cloud;
 
-    public ServerControl() {
+    public ServerControl(String serverType) {
+        token = ApiToken.getToken(serverType);
+        //TODO add initialization of variables to incorporate the given serverType
+
         cloud = new HetznerCloudAPI(token);
         List<Object> keys = new LinkedList<>();
         for (SSHKey key : cloud.getSSHKeys().getSshKeys()) {
