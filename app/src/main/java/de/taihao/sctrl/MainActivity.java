@@ -12,7 +12,8 @@ import java.util.List;
 import me.tomsdevsn.hetznercloud.HetznerCloudAPI;
 import me.tomsdevsn.hetznercloud.objects.general.Server;
 
-
+import net.jstorch.mc.*;
+import net.jstorch.mc.cloudcontrol.ServerControl;
 
 public class MainActivity extends Activity {
 
@@ -64,9 +65,10 @@ public class MainActivity extends Activity {
         }
     }
 
-    /*
+    /**
      * shows Toast including three dots (...) indicating something is loading
      * @param starting false: stopping, true: starting
+     *
      */
     public void showToast(boolean starting) {
         String msg;
