@@ -16,15 +16,14 @@ import net.jstorch.mc.cloudcontrol.ServerControl;
 
 public class MainActivity extends Activity {
 
-    private List<String> statusMSG = new ArrayList<>();
-
-    private ServerControl serverControl = new ServerControl();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final Switch sw = findViewById(R.id.switchServer1);
+
+        List<String> statusMSG = new ArrayList<>();
+        ServerControl serverControl = new ServerControl();
 
         setSwitch(sw); // NETWORK ON MAIN THREAD EXCEPTION
 
