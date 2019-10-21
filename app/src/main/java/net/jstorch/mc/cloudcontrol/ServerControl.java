@@ -14,6 +14,7 @@ import me.tomsdevsn.hetznercloud.objects.request.UpdateImageRequest;
 import me.tomsdevsn.hetznercloud.objects.response.ImageType;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URI;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.client.ClientHttpRequest;
@@ -21,6 +22,7 @@ import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -29,7 +31,7 @@ import java.util.concurrent.TimeUnit;
  * Klasse zur Steuerung des Minecraft Servers
  * Ausgabe von Status Nachrichten über String Lists
  */
-public class ServerControl extends AsyncTask {
+public class ServerControl extends AsyncTask<String, Void, List<String>> {
     /**
      * API Token
      * Api Token to get from the ApiToken Class which contains the Token as a String and is not uploaded to git
@@ -74,7 +76,7 @@ public class ServerControl extends AsyncTask {
 
     public ServerControl(String serverType) {
 
-        //change vanilla to minecraft serverType because joshuaStorch is to lazy to review his old code
+        //change vanilla to minecraft serverType because joshuaStorch is too lazy to review his old code
         if(serverType.equals("vanilla"))
             serverType = "minecraft";
 
@@ -90,11 +92,28 @@ public class ServerControl extends AsyncTask {
 
     }
 
+    /**
+     *
+     * @param action determines whether to start or stop the server
+     * @return result will get populated by the status messages
+     */
     @Override
-    protected Object doInBackground(Object[] objects) {
+    protected List<String> doInBackground(String[] action) {
         // TODO: use parameter to execute certain methods depending on parameter
         // method is required by abstract class android.os.AsyncTask
-        return null;
+
+        ArrayList<String> result = new ArrayList<>();
+
+        switch (action[0]) {
+            case "start": {
+                startServer(result);
+            }
+            case "stop": {
+                createImage(result);
+            }
+        }
+
+        return result;
     }
 
     /**
@@ -407,4 +426,5 @@ public class ServerControl extends AsyncTask {
         return 0;
 
     }
+
 }
