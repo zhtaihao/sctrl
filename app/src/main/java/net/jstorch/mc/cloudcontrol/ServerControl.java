@@ -1,5 +1,6 @@
 package net.jstorch.mc.cloudcontrol;
 
+import de.taihao.sctrl.ApiToken;
 import me.tomsdevsn.hetznercloud.HetznerCloudAPI;
 import me.tomsdevsn.hetznercloud.objects.general.Image;
 import me.tomsdevsn.hetznercloud.objects.general.SSHKey;
@@ -29,8 +30,9 @@ import java.util.concurrent.TimeUnit;
 public class ServerControl {
     /**
      * API Token
+     * Api Token to get from the ApiToken Class which contains the Token as a String and is not uploaded to git
      */
-    private static final String token = "Hsk87c4WNWz94DRi7HMacwknqYDGP5Ps7T73qzjuB9GAn9S1wrGaSlVuZYfMUkPn";
+    private static final String token = ApiToken.APIVANILLA;
     /**
      * Liste an SSH Keys. Wird im Konstruktor automatisch mit allen SSH Keys im Projekt gefüllt
      */
