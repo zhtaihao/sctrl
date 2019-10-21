@@ -42,23 +42,23 @@ public class ServerControl extends AsyncTask {
     /**
      * Name den der Server beim Starten bekommt
      */
-    private static final String serverName = "minecraft-server.jstorch.net";
+    private static String serverName;
     /**
      * Name den das aktuelle Image bekommt
      */
-    private static final String imageCurrent = "minecraft-current";
+    private static String imageCurrent;
     /**
      * Name den das alte zu löschende Image bekommt
      */
-    private static final String imageOld = "minecraft-old";
+    private static String imageOld;
     /**
      * IPv4 reverse DNS Eintrag
      */
-    private static final String reverseDNS4 = "minecraft.jstorch.net";
+    private static String reverseDNS4;
     /**
      * IPv6 reverse DNS Eintrag
      */
-    private static final String reverseDNS6 = "minecraft6.jstorch.net";
+    private static String reverseDNS6;
     /**
      * Servertyp (siehe Hetznercloud Dokuemtation)
      */
@@ -72,13 +72,21 @@ public class ServerControl extends AsyncTask {
      */
     private HetznerCloudAPI cloud;
 
-    public ServerControl(String serverType) {
+    public ServerControl(String serverID) {
 
         //change vanilla to minecraft serverType because joshuaStorch is to lazy to review his old code
         if(serverType.equals("vanilla"))
-            serverType = "minecraft";
+            serverID = "minecraft";
 
-        token = ApiToken.getToken(serverType);
+        token = ApiToken.getToken(serverID);
+
+        //strings abhängig von zu startendem server setzen
+        serverName = serverID + "-server.jstorch.net";
+        imageCurrent = serverID + "-current";
+        imageOld = serverID + "-old";
+        reverseDNS4 = serverID + "4.jstorch.net";
+        reverseDNS6 = serverID + "6.jstorch.net";
+
         //TODO add initialization of variables to incorporate the given serverType
 
         cloud = new HetznerCloudAPI(token);
