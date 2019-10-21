@@ -20,6 +20,8 @@ public class MainActivity extends Activity {
 
     private ServerControl serverControl = new ServerControl();
 
+    int i = 69;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
