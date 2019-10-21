@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Server Control</string>
+    <string name="server1_name">Vanilla</string>
+    <string name="server_starting">Starting</string>
+    <string name="server_stopping">Stopping</string>
+</resources>
