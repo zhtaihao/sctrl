@@ -74,7 +74,7 @@ public class ServerControl extends AsyncTask {
 
     public ServerControl(String serverType) {
 
-        //change vanilla to minecraft servertype because joshuaStorch is to lazy to review his old code
+        //change vanilla to minecraft serverType because joshuaStorch is to lazy to review his old code
         if(serverType.equals("vanilla"))
             serverType = "minecraft";
 
