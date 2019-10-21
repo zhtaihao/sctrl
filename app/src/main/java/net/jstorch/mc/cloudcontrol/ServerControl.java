@@ -30,6 +30,7 @@ import java.util.concurrent.TimeUnit;
 public class ServerControl {
     /**
      * API Token
+     * Api Token to get from the ApiToken Class which contains the Token as a String and is not uploaded to git
      */
     private static final String token = ApiToken.APIVANILLA;
     /**
