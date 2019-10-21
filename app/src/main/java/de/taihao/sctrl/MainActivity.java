@@ -12,7 +12,6 @@ import java.util.List;
 import me.tomsdevsn.hetznercloud.HetznerCloudAPI;
 import me.tomsdevsn.hetznercloud.objects.general.Server;
 
-import net.jstorch.mc.*;
 import net.jstorch.mc.cloudcontrol.ServerControl;
 
 public class MainActivity extends Activity {
