@@ -106,25 +106,25 @@ public class ServerControl extends AsyncTask<String, Void, List<String>> {
     /**
      *
      * @param action determines whether to start or stop the server
-     * @return result will get populated by the status messages
+     * @return statusMSG will get populated by the status messages
      */
     @Override
     protected List<String> doInBackground(String[] action) {
         // TODO: use parameter to execute certain methods depending on parameter
         // method is required by abstract class android.os.AsyncTask
 
-        ArrayList<String> result = new ArrayList<>();
+        ArrayList<String> statusMSG = new ArrayList<>();
 
         switch (action[0]) {
             case "start": {
-                startServer(result);
+                startServer(statusMSG);
             }
             case "stop": {
-                createImage(result);
+                createImage(statusMSG);
             }
         }
 
-        return result;
+        return statusMSG;
     }
 
     /**
