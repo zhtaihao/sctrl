@@ -110,7 +110,6 @@ public class ServerControl extends AsyncTask<String, Void, List<String>> {
      */
     @Override
     protected List<String> doInBackground(String[] action) {
-        // TODO: use parameter to execute certain methods depending on parameter
         // method is required by abstract class android.os.AsyncTask
 
         ArrayList<String> statusMSG = new ArrayList<>();
