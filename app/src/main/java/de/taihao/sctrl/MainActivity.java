@@ -16,6 +16,7 @@ public class MainActivity extends Activity {
     private List<String> statusMSG;
     private ServerControl serverControlVanilla;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

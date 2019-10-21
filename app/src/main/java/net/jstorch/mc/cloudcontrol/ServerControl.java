@@ -80,14 +80,12 @@ public class ServerControl extends AsyncTask {
 
         token = ApiToken.getToken(serverID);
 
-        //strings abhängig von zu startendem server setzen
+        //Set strings to match the given ServerID
         serverName = serverID + "-server.jstorch.net";
         imageCurrent = serverID + "-current";
         imageOld = serverID + "-old";
         reverseDNS4 = serverID + "4.jstorch.net";
         reverseDNS6 = serverID + "6.jstorch.net";
-
-        //TODO add initialization of variables to incorporate the given serverType
 
         cloud = new HetznerCloudAPI(token);
         List<Object> keys = new LinkedList<>();
