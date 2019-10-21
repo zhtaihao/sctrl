@@ -73,6 +73,11 @@ public class ServerControl extends AsyncTask {
     private HetznerCloudAPI cloud;
 
     public ServerControl(String serverType) {
+
+        //change vanilla to minecraft servertype because joshuaStorch is to lazy to review his old code
+        if(serverType.equals("vanilla"))
+            serverType = "minecraft";
+
         token = ApiToken.getToken(serverType);
         //TODO add initialization of variables to incorporate the given serverType
 
