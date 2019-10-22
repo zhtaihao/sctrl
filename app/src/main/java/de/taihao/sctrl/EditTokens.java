@@ -11,13 +11,15 @@ public class EditTokens extends Activity {
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
 
-    public EditTokens(Map<String, String> tokens) {
+    public void AddTokens(Map<String, String> tokens) {
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        /**
+         * adds all of the user defined tokens to the sharedPreferences file
+         */
         for (Map.Entry<String, String> token : tokens.entrySet()) {
             editor.putString(token.getKey(), token.getValue());
         }
-        editor.putString();
     }
-
+    
 
 }
