@@ -9,8 +9,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.jstorch.mc.cloudcontrol.ServerControl;
-
 public class MainActivity extends Activity {
 
     public static List<String> STATUS_MSGS;
@@ -27,9 +25,10 @@ public class MainActivity extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         final Switch sw = findViewById(R.id.switchServer1);
 
-        setSwitch(sw); // NETWORK ON MAIN THREAD EXCEPTION
+        setSwitch(sw);
     }
 
     public void setSwitch(Switch sw){
