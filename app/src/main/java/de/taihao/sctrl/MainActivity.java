@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         final Switch sw = findViewById(R.id.switchForServer1);
 
-        setSwitch(sw); // NETWORK ON MAIN THREAD EXCEPTION
+        setSwitch(sw);
     }
 
     public void setSwitch(Switch sw){
@@ -54,15 +54,22 @@ public class MainActivity extends Activity {
                 }
                 sw.setEnabled(true);
             }
+            /*
             case 3: {
                 // Server wird gerade gestoppt
                 sw.setChecked(false);
                 while (serverStatus != 1){
                     //showToast(false);
                     new GetServerStatusTask().execute("vanilla");
+
+
                 }
                 sw.setEnabled(true);
+
+
             }
+
+             */
         }
     }
 

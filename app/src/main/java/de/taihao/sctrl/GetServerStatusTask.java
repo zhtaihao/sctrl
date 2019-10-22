@@ -13,7 +13,7 @@ public class GetServerStatusTask extends AsyncTask<String, Void, Integer> {
 
     /**
      * creates a new instance of ServerControl for the Type specified in servertID and fetches the serverstatus
-     * @param serverID the name of the modpack
+     * @param serverID the name of the server
      * @return the fetched serverstatus as specified in getServerStatus()
      */
 
