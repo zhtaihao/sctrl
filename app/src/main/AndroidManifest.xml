@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="de.taihao.sctrl">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".EditTokensActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

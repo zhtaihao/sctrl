@@ -2,19 +2,25 @@ package de.taihao.sctrl;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
-
-public class EditTokens extends Activity {
+public class EditTokensActivity extends AppCompatActivity {
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
 
-    public void AddTokens(@NotNull Map<String, String> tokens) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_edittokens);
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+    }
+
+    public void AddTokens(@NotNull Map<String, String> tokens) {
         /**
          * adds all of the user defined tokens to the sharedPreferences file
          */
@@ -22,6 +28,4 @@ public class EditTokens extends Activity {
             editor.putString(token.getKey(), token.getValue());
         }
     }
-
-
 }
