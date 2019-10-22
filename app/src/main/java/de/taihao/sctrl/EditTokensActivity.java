@@ -25,7 +25,6 @@ public class EditTokensActivity extends AppCompatActivity {
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         findViewById(R.id.button_done).setEnabled(false);
         tokens = new HashMap<>();
-
     }
 
     public void AddTokens(@NotNull Map<String, String> tokens) {
