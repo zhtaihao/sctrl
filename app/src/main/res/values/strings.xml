@@ -5,4 +5,6 @@
     <string name="server_stopping">Stopping</string>
     <string name="textinput_name">Name</string>
     <string name="textinput_token">Token</string>
+    <string name="button_add">Add</string>
+    <string name="button_add_another">Add another</string>
 </resources>
