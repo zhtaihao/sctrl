@@ -22,18 +22,20 @@ public class EditTokensActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edittokens);
-        sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         findViewById(R.id.button_done).setEnabled(false);
         tokens = new HashMap<>();
     }
 
     public void AddTokens(@NotNull Map<String, String> tokens) {
+        sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        editor = sharedPref.edit();
         /**
          * adds all of the user defined tokens to the sharedPreferences file
          */
         for (Map.Entry<String, String> token : tokens.entrySet()) {
             editor.putString(token.getKey(), token.getValue());
         }
+        editor.commit();
     }
 
     public void buttonAddOnClick(View view){
