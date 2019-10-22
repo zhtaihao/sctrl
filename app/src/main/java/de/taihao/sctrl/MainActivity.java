@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
 
         final Map<String, Switch> switchesByServerID = new HashMap<>();
 
-        Switch vanillaSw = findViewById(R.id.switchServer1);
+        Switch vanillaSw = findViewById(R.id.switchForServer1);
         Switch stoneblockSw = null;
 
         switchesByServerID.put("vanilla", vanillaSw);
