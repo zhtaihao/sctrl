@@ -8,7 +8,7 @@ import net.jstorch.mc.cloudcontrol.ServerControl;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SetSwitchTask extends AsyncTask <String,Void,boolean[]> {
+public class SetSwitchStateTask extends AsyncTask <String,Void,boolean[]> {
 
     private Switch sw;
 
@@ -71,7 +71,7 @@ public class SetSwitchTask extends AsyncTask <String,Void,boolean[]> {
     }
 
     /**
-     * overrides the entry with the key serverID in the Switchstate Map in the Main Activity with the ne Switchstates
+     * overrides the entry with the key serverID in the Switchstate Map in the Main Activity with the new Switchstates
      * @param switchStates
      */
     @Override

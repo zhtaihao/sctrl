@@ -53,8 +53,9 @@ public class MainActivity extends Activity {
         SWITCH_STATES_BY_SERVER_ID = Collections.unmodifiableMap(switchStatesByServerID);
 
         for (Map.Entry<String, Switch > entry : SWITCHES_BY_SERVER_ID.entrySet()) {
-            new SetSwitchTask().execute(entry.getKey());
+            new SetSwitchStateTask().execute(entry.getKey());
         }
+
 
     }
 
@@ -74,7 +75,7 @@ public class MainActivity extends Activity {
     }
 
     public void setSwitch(String serverID){
-        new SetSwitchTask().execute(serverID);
+        new SetSwitchStateTask().execute(serverID);
 
     }
 
