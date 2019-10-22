@@ -7,26 +7,21 @@
     tools:context=".MainActivity">
 
     <Switch
-        android:id="@+id/switchServer1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:thumbTint="@color/colorAccent"
-        android:trackTint="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewServer1"
-        android:layout_width="wrap_content"
+        android:id="@+id/switchForServer1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:layout_marginEnd="16dp"
+        android:gravity="start"
+        android:showText="false"
         android:text="@string/server1_name"
+        android:textAlignment="textStart"
         android:textSize="18sp"
+        android:thumbTint="@color/colorAccent"
+        android:trackTint="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

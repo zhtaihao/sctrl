@@ -2,14 +2,10 @@ package de.taihao.sctrl;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.CompoundButton;
 import android.widget.Switch;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import net.jstorch.mc.cloudcontrol.ServerControl;
 
 public class MainActivity extends Activity {
 
@@ -27,7 +23,7 @@ public class MainActivity extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final Switch sw = findViewById(R.id.switchServer1);
+        final Switch sw = findViewById(R.id.switchForServer1);
 
         setSwitch(sw); // NETWORK ON MAIN THREAD EXCEPTION
     }
