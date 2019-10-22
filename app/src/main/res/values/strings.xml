@@ -3,4 +3,6 @@
     <string name="server1_name">Vanilla</string>
     <string name="server_starting">Starting</string>
     <string name="server_stopping">Stopping</string>
+    <string name="textinput_name">Name</string>
+    <string name="textinput_token">Token</string>
 </resources>
