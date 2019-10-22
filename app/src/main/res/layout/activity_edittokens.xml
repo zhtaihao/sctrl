@@ -54,4 +54,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
         android:onClick="buttonAddOnClick"/>
 
+    <Button
+        android:id="@+id/button_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/button_done"
+        app:layout_constraintEnd_toEndOf="@+id/button_add"
+        app:layout_constraintTop_toBottomOf="@+id/button_add" />
+
 </android.support.constraint.ConstraintLayout>

@@ -42,5 +42,6 @@ public class EditTokensActivity extends AppCompatActivity {
 
         tokens.put(name, token);
         buttonAdd.setText(getString(R.string.button_add_another));
+
     }
 }

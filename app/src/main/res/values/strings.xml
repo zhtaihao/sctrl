@@ -7,4 +7,5 @@
     <string name="textinput_token">Token</string>
     <string name="button_add">Add</string>
     <string name="button_add_another">Add another</string>
+    <string name="button_done">Done</string>
 </resources>

@@ -8,4 +8,5 @@
     <string name="textinput_token">Token</string>
     <string name="button_add">Hinzufügen</string>
     <string name="button_add_another">Weiteren hinzufügen</string>
+    <string name="button_done">Fertig</string>
 </resources>
