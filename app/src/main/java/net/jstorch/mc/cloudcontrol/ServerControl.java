@@ -1,7 +1,5 @@
 package net.jstorch.mc.cloudcontrol;
 
-import android.os.AsyncTask;
-
 import de.taihao.sctrl.ApiToken;
 import me.tomsdevsn.hetznercloud.HetznerCloudAPI;
 import me.tomsdevsn.hetznercloud.objects.general.Image;
@@ -21,7 +19,6 @@ import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -375,7 +372,7 @@ public class ServerControl /*extends AsyncTask<String, Void, List<String>> */{
      * @return 0 Eintrag erfolgreich aktualisiert
      */
     private int updateDNS(List<String> statusMSG, String ipv4, String ipv6) {
-        URI uri = null;
+        URI uri;
         try {
             uri = new URI("https://www.duckdns.org/update?domains=jsminecraft&token=000c1aca-133f-4921-b4c8-b12007cef4b5&ipv6=" + ipv6 + "&ip=" + ipv4);
         } catch (URISyntaxException e) {
