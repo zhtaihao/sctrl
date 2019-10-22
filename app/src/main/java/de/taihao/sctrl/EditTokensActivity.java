@@ -16,7 +16,7 @@ import java.util.Map;
 public class EditTokensActivity extends AppCompatActivity {
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
-    Map<String, String> tokens = new HashMap<>();
+    Map<String, String> tokens;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,7 @@ public class EditTokensActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edittokens);
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         findViewById(R.id.button_done).setEnabled(false);
+        tokens = new HashMap<>();
 
     }
 
