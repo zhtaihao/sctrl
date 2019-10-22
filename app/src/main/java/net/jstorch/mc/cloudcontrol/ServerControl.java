@@ -103,33 +103,6 @@ public class ServerControl /*extends AsyncTask<String, Void, List<String>> */{
     }
 
     /**
-     *
-     * @param action determines whether to start or stop the server
-     * @return statusMSG will get populated by the status messages
-     */
-    /*
-    @Override
-    protected List<String> doInBackground(String[] action) {
-        // method is required by abstract class android.os.AsyncTask
-
-        ArrayList<String> statusMSG = new ArrayList<>();
-
-        switch (action[0]) {
-            case "start": {
-                startServer(statusMSG);
-            }
-            case "stop": {
-                createImage(statusMSG);
-            }
-        }
-
-        return statusMSG;
-    }
-    */
-
-
-
-    /**
      * Prüft den aktuellen Serverstatus
      * @return 0 der Server läuft gerade
      * @return 1 der Server ist aus und kann gestartet werden
