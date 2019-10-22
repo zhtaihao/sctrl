@@ -4,4 +4,9 @@
     <string name="server1_name">Vanille</string>
     <string name="server_starting">Startet</string>
     <string name="server_stopping">Stoppt</string>
+    <string name="textinput_name">Name</string>
+    <string name="textinput_token">Token</string>
+    <string name="button_add">Hinzufügen</string>
+    <string name="button_add_another">Weiteren hinzufügen</string>
+    <string name="button_done">Fertig</string>
 </resources>

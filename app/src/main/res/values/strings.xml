@@ -3,4 +3,9 @@
     <string name="server1_name">Vanilla</string>
     <string name="server_starting">Starting</string>
     <string name="server_stopping">Stopping</string>
+    <string name="textinput_name">Name</string>
+    <string name="textinput_token">Token</string>
+    <string name="button_add">Add</string>
+    <string name="button_add_another">Add another</string>
+    <string name="button_done">Done</string>
 </resources>
