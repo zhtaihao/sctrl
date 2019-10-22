@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.widget.Switch;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends Activity {
 
@@ -17,60 +20,62 @@ public class MainActivity extends Activity {
 
     private int serverStatus;
 
+    static Map<String,Switch> SWITCHES_BY_SERVER_ID;
+
+    static Map<String,boolean[]> SWITCH_STATES_BY_SERVER_ID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final Switch sw = findViewById(R.id.switchForServer1);
 
-        setSwitch(sw);
+
+        // Map that maps the serverType to its respective Switch
+
+        final Map<String, Switch> switchesByServerID = new HashMap<>();
+
+        Switch vanillaSw = findViewById(R.id.switchForServer1);
+        Switch stoneblockSw = null;
+
+        switchesByServerID.put("vanilla", vanillaSw);
+        switchesByServerID.put("stoneblock", stoneblockSw);
+        SWITCHES_BY_SERVER_ID = Collections.unmodifiableMap(switchesByServerID);
+
+        // Map that maps serverID to the states of its respective switches
+
+        final Map<String, boolean[]> switchStatesByServerID = new HashMap<>();
+
+        switchStatesByServerID.put("vanilla", null);
+        switchStatesByServerID.put("stoneblock", null );
+
+        SWITCH_STATES_BY_SERVER_ID = Collections.unmodifiableMap(switchStatesByServerID);
+
+        for (Map.Entry<String, Switch > entry : SWITCHES_BY_SERVER_ID.entrySet()) {
+            new SetSwitchTask().execute(entry.getKey());
+        }
+
     }
 
-    public void setSwitch(Switch sw){
+    /**
+     *
+     * @param serverID the name of the server being started
+     * @return the respective switch for each serverType in SWITCHES_BY_SERVER_ID
+     */
+    public static Switch getSwitch(String serverID){
+        return SWITCHES_BY_SERVER_ID.get(serverID);
+    }
 
+
+    private int getServerStatus(String serverID){
         new GetServerStatusTask().execute("vanilla");
-        serverStatus = SERVER_STATUS;
+        return SERVER_STATUS;
+    }
 
-        sw.setEnabled(false);
-        switch (serverStatus) {
-            case 0: {
-                // Server läuft gerade
-                sw.setChecked(true);
-                sw.setEnabled(true);
-            }
-            case 1: {
-                // Server ist aus, kann gestartet werden
-                sw.setChecked(false);
-                sw.setEnabled(true);
-            }
-            case 2: {
-                // Server wird gerade gestartet
-                sw.setChecked(true);
-                while (serverStatus != 0){
-                    //showToast(true);
-                    new GetServerStatusTask().execute("vanilla");
-                }
-                sw.setEnabled(true);
-            }
-            /*
-            case 3: {
-                // Server wird gerade gestoppt
-                sw.setChecked(false);
-                while (serverStatus != 1){
-                    //showToast(false);
-                    new GetServerStatusTask().execute("vanilla");
+    public void setSwitch(String serverID){
+        new SetSwitchTask().execute(serverID);
 
-
-                }
-                sw.setEnabled(true);
-
-
-            }
-
-             */
-        }
     }
 
     /**
