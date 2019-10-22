@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit;
  * Klasse zur Steuerung des Minecraft Servers
  * Ausgabe von Status Nachrichten über String Lists
  */
-public class ServerControl extends AsyncTask<String, Void, List<String>> {
+public class ServerControl /*extends AsyncTask<String, Void, List<String>> */{
     /**
      * API Token
      * Api Token to get from the ApiToken Class which contains the Token as a String and is not uploaded to git
@@ -107,6 +107,7 @@ public class ServerControl extends AsyncTask<String, Void, List<String>> {
      * @param action determines whether to start or stop the server
      * @return statusMSG will get populated by the status messages
      */
+    /*
     @Override
     protected List<String> doInBackground(String[] action) {
         // method is required by abstract class android.os.AsyncTask
@@ -124,6 +125,9 @@ public class ServerControl extends AsyncTask<String, Void, List<String>> {
 
         return statusMSG;
     }
+    */
+
+
 
     /**
      * Prüft den aktuellen Serverstatus
