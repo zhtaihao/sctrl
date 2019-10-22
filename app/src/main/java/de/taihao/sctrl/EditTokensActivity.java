@@ -23,6 +23,7 @@ public class EditTokensActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edittokens);
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        findViewById(R.id.button_done).setEnabled(false);
 
     }
 
@@ -37,11 +38,22 @@ public class EditTokensActivity extends AppCompatActivity {
 
     public void buttonAddOnClick(View view){
         Button buttonAdd = findViewById(R.id.button_add);
-        String name = ((EditText) findViewById(R.id.editTextName)).getText().toString();
-        String token = ((EditText) findViewById(R.id.editTextToken)).getText().toString();
+        Button buttonDone = findViewById(R.id.button_done);
+        EditText editName = (EditText) findViewById(R.id.editTextName);
+        EditText editToken = findViewById(R.id.editTextToken);
+        String name = editName.getText().toString();
+        String token = editToken.getText().toString();
 
         tokens.put(name, token);
-        buttonAdd.setText(getString(R.string.button_add_another));
 
+        editName.setText("");
+        editToken.setText("");
+
+        buttonAdd.setText(getString(R.string.button_add_another));
+        buttonDone.setEnabled(true);
+    }
+
+    public void buttonDoneOnClick(View view){
+        AddTokens(tokens);
     }
 }

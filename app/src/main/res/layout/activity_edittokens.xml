@@ -61,6 +61,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/button_done"
         app:layout_constraintEnd_toEndOf="@+id/button_add"
-        app:layout_constraintTop_toBottomOf="@+id/button_add" />
+        app:layout_constraintTop_toBottomOf="@+id/button_add"
+        android:onClick="buttonDoneOnClick"/>
 
 </android.support.constraint.ConstraintLayout>
