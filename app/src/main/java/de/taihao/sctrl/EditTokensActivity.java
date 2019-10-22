@@ -35,7 +35,7 @@ public class EditTokensActivity extends AppCompatActivity {
         for (Map.Entry<String, String> token : tokens.entrySet()) {
             editor.putString(token.getKey(), token.getValue());
         }
-        editor.commit();
+        editor.apply();
     }
 
     public void buttonAddOnClick(View view){
