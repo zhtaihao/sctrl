@@ -13,9 +13,14 @@ import net.jstorch.mc.cloudcontrol.ServerControl;
 
 public class MainActivity extends Activity {
 
-    private List<String> statusMSG;
-    private ServerControl serverControlVanilla;
-    private ServerControl serverControlStoneblock;
+    public static List<String> STATUS_MSGS;
+
+    private List<String> statusMSG = new ArrayList<>();
+
+    public static int SERVER_STATUS;
+
+    private int serverStatus;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,17 +29,16 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         final Switch sw = findViewById(R.id.switchServer1);
 
-        statusMSG = new ArrayList<>();
-        serverControlVanilla = new ServerControl("vanilla", statusMSG);
-        serverControlStoneblock = new ServerControl("stoneblock" , statusMSG);
-
         setSwitch(sw); // NETWORK ON MAIN THREAD EXCEPTION
     }
 
     public void setSwitch(Switch sw){
 
+        new GetServerStatusTask().execute("vanilla");
+        serverStatus = SERVER_STATUS;
+
         sw.setEnabled(false);
-        switch (serverControlVanilla.getServerStatus()) {
+        switch (serverStatus) {
             case 0: {
                 // Server läuft gerade
                 sw.setChecked(true);
@@ -48,16 +52,18 @@ public class MainActivity extends Activity {
             case 2: {
                 // Server wird gerade gestartet
                 sw.setChecked(true);
-                while (serverControlVanilla.getServerStatus() != 0){
-                    showToast(true);
+                while (serverStatus != 0){
+                    //showToast(true);
+                    new GetServerStatusTask().execute("vanilla");
                 }
                 sw.setEnabled(true);
             }
             case 3: {
                 // Server wird gerade gestoppt
                 sw.setChecked(false);
-                while (serverControlVanilla.getServerStatus() != 1){
-                    showToast(false);
+                while (serverStatus != 1){
+                    //showToast(false);
+                    new GetServerStatusTask().execute("vanilla");
                 }
                 sw.setEnabled(true);
             }
@@ -69,6 +75,7 @@ public class MainActivity extends Activity {
      * @param starting false: stopping, true: starting
      *
      */
+/*
     public void showToast(boolean starting) {
         String msg;
         if (starting){
@@ -105,6 +112,8 @@ public class MainActivity extends Activity {
         }
     }
 
+ */
+/*
     public void switchServer1(){
         final Switch sw = findViewById(R.id.switchServer1);
         sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -127,6 +136,8 @@ public class MainActivity extends Activity {
         });
 
     }
+
+ */
 }
 
 

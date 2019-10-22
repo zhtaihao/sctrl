@@ -14,11 +14,14 @@ public class StartServerTask extends AsyncTask<String, Void, ServerControl > {
     @Override
     protected ServerControl doInBackground(String[] serverType) {
         ServerControl serverControl = new ServerControl(serverType[0], statusMSG);
+
         return  serverControl;
     }
 
     @Override
     protected void onPostExecute(ServerControl serverControl) {
+
         serverControl.startServer(statusMSG);
+
     }
 }
