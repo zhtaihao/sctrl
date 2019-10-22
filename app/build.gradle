@@ -36,5 +36,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     api "me.tomsdevsn:hetznercloud-api:2.8.0"
     implementation 'org.jetbrains:annotations:15.0'
+    // https://mvnrepository.com/artifact/javax.xml/jaxp-api
+    api group: 'javax.xml', name: 'jaxp-api', version: '1.4.2'
 
 }
